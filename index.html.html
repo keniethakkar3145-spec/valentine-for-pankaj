@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My First Valentine With You ❤</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    header {
+      padding: 60px 20px;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    section {
+      padding: 50px 20px;
+      max-width: 900px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 30px;
+      margin: 25px 0;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .card h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .card p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .heart {
+      font-size: 3rem;
+      animation: pulse 1.5s infinite;
+      margin: 20px 0;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    /* Floating hearts */
+    .floating-heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 24px;
+      animation: floatUp 8s linear infinite;
+      opacity: 0.7;
+      z-index: 1;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translateY(-100vh); opacity: 0; }
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      max-height: 350px;
+      object-fit: contain;
+      background: rgba(255,255,255,0.2);
+    }
+
+    button {
+      background: #fff;
+      color: #ff4d6d;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background: #ff4d6d;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    footer {
+      padding: 30px 20px;
+      font-size: 1rem;
+      opacity: 0.9;
+      position: relative;
+      z-index: 2;
+    }
+
+    .after-yes {
+      display: none;
+      text-align: center;
+      padding: 40px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .after-yes h1 {
+      font-size: 2.5rem;
+      color: #ff2f68;
+    }
+
+    .hearts-burst {
+      font-size: 3rem;
+      animation: pulse 1s infinite alternate;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.2); }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Background Music -->
+  <audio id="bgMusic" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+  </audio>
+
+  <header>
+    <h1>Happy First Valentine ❤</h1>
+    <p>Pankaj, this is something I made only for you</p>
+  </header>
+
+  <section>
+    <div class="card">
+      <h2>Dear My Love</h2>
+      <p>
+        This is our first Valentine, and I wanted to do something special — something that stays forever.
+        From strangers to partners, from talks to laughter, from moments to memories…
+        you have become someone my heart feels safe with.
+      </p>
+      <div class="heart">❤</div>
+      <p>
+        I may not say it every day, but I choose you every day.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Why You Are Special</h2>
+      <p>
+        • You are the calm to my chaos<br />
+        • You feel like home in human form<br />
+        • You are my today and my forever<br />
+	• My favourite adventure<br />
+	• Thanks for holding my heart
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Our Little Memories</h2>
+      <p>(Replace these images with our photos ❤)</p>
+      <div class="gallery">
+        <img src="images/photo1.jpg" alt="our memory" />
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>A Small Promise</h2>
+      <p>
+        I promise to stand by you, annoy you, love you,
+        support your dreams, and hold your hand —
+        not just today, but always.
+      </p>
+      <button onclick="showValentine()">Click for a Surprise 💌</button>
+      <div id="valentineBox" style="display:none; margin-top:25px;">
+        <h2>Will you be my Valentine, Pankaj? 💖</h2>
+        <button onclick="yesValentine()">YES ❤</button>
+        <button onclick="noValentine()" style="margin-left:10px;">NO 🙈</button>
+        <p id="valentineReply" style="margin-top:20px; font-size:1.3rem;"></p>
+      </div>
+    </div>
+ </section>
+
+      <div id="afterYes" class="after-yes">
+  	<h1>Happy Valentine’s Day Pookie ❤️</h1>
+  	<p>You are my today, my tomorrow, my always.</p>
+  	<div class="hearts-burst">💖💘💞💕</div>
+      </div>
+    </div>
+ 
+  <footer>
+    Made with ❤ just for you
+  </footer>
+
+  <script>
+  function showValentine() {
+    document.getElementById('valentineBox').style.display = 'block';
+  }
+
+  function yesValentine() {
+    document.querySelector('header').style.display = 'none';
+    document.querySelector('section').style.display = 'none';
+    document.querySelector('footer').style.display = 'none';
+
+    const afterYes = document.getElementById('afterYes');
+    afterYes.style.display = 'block';
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function noValentine() {
+    document.getElementById('valentineReply').innerHTML =
+      "Oops! That button was just for drama 😜 You know you are already my Valentine ❤";
+  }
+
+  // Floating hearts animation
+  setInterval(() => {
+    const heart = document.createElement('div');
+    heart.classList.add('floating-heart');
+    heart.innerHTML = '❤';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = 6 + Math.random() * 4 + 's';
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 10000);
+  }, 500);
+</script>
+
+</body>
+</html>
